@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct StartButtonView: View {
+    @AppStorage("isOnboarding") var isOnboarding: Bool?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            isOnboarding = false
+        } label: {
+            HStack(spacing: 8) {
+                Text("Start")
+                
+                Image(systemName: "arrow.right.circle")
+                    .imageScale(.large)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(
+                Capsule()
+                    .strokeBorder(.white, lineWidth: 1.5)
+            )
+        }
+        .accentColor(.white)
+
     }
 }
 

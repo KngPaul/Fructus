@@ -8,11 +8,38 @@
 import SwiftUI
 
 struct SettingsRowView: View {
+    var label: String
+    var content: String
+    var link: String?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Divider()
+                .padding(.vertical, 4)
+            
+            LabeledContent {
+                if link != nil {
+                    HStack {
+                        Link(content, destination: URL(string: link!)!)
+                        Image(systemName: "arrow.up.right.square")
+                        
+                    }
+                } else {
+                    Text(content)
+                        .foregroundStyle(.primary)
+                }
+                
+            } label: {
+                Text(label)
+                    .foregroundStyle(.secondary)
+                
+            }
+            
+        }
+        
     }
 }
 
 #Preview {
-    SettingsRowView()
+    SettingsRowView(label: "Developer", content: "John / Jane")
 }
